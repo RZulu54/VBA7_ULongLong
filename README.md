@@ -1,34 +1,20 @@
 # VBA7_ULongLong
-Emulate ULongLong 64 bit unsigned integers with VBA7 (64/32 bit MsOffice) or VB6 
+Emulate ULongLong 64 bit unsigned integers with VBA7 (64/32 bit MsOffice) or VB6 (Visual Basic 6)
 
-List of functions in module 'bas64BitOperations'	
+The problem with VBA/VB6 is that there are no 64-bit unsigned integers (ULongLong) available.
+The module 'bas64BitOperations.bas' contains functions to emulate bit operations for 64-bit unsigned integers.
 
-Emulate ULongLong 64 bit unsigned integer operations	
+For 32-bit MsOffice VBA or VB6 we can use two Long 32-bit signed integers combined in a new datatype TBit64.
+ > this requires functions for basic bit operations like AND, OR, XOR, NOT.
+For 64-bit MsOffice VBA7 we can use the new 64-bit signed integer datatype LongLong.
+ > basic bit operations like AND, OR, XOR, NOT do NOT need extra functions but can be used directly.
 
-call Init32Bit before	call Init64Bit before	
-32-bit mode		64-bit mode	    Some logic needed to handle the sign bit
-================================================================================
-Clear64			  LL=0	
-ClearBit64		ClearBit64LL	
-SetBit64		  SetBit64LL	
-IsBitSet64		IsBitSet64LL	
-Let64			    L1 = L2	
-AND64			    LL = LL1 AND LL2	
-OR64			    LL = LL1 OR LL2	
-XOr64			    LL = LL1 XOR LL2	
-NOT64			    LL = NOT LL1	
-ANDNOT64		  LL = LL1 AND NOT LL2	for speed only (example)
-Equal64			  (LL1 = LL2)	
-IsNotEmpty64	LL1 <> 0	
-ShiftLeft64		ShiftLeft64LL		      shift left  1 bit
-ShiftRight64	ShiftRight64LL		    shift right  1 bit
-BitsShiftLeft64		BitsShiftLeftLL		shift left  1 to 63 bits
-BitsShiftRight64	BitsShiftRightLL	shift right  1 to 63 bits
-PopCnt64		  PopCnt64LL		returns number of bits set
-Lsb64			    Lsb64LL			returns position of left most bit
-Rsb64			    Rsb64LL			returns position of right most bit
-PopLsb64		  PopLsb64LL		returns position of left most bit and removes it
-MoreThanOne64	PopCnt64LL>1		for speed only (example)
-SetAND64		  LL = LL AND LL1		for speed only (example)
-SetOR64			  LL = LL OR LL1		for speed only (example)
+Functions available for both variants are:
+SetBit64, ClearBit64, ShiftLeft64, ShiftRight64, PopCnt64 (number of bits set), 
+Lsb64 (position of left most bit), Rsb64 (position of left most bit) and some more.
+
+The Ms-Excel file VBA7.xlsm shows how to use these functions for 32/64-bit MsOffice.
+For 64-bit Excel there is also a simple chess demonstration how to use 64-bit chessboard logic.
+(for the best Excel/VB6 chess program available please see my project at github.com/RZulu54/ChessBrainVB)
+
 
