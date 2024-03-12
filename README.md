@@ -26,4 +26,9 @@ For 64-bit Excel there is also a simple chess demonstration how to use 64-bit ch
 
 (for the best Excel/VB6 chess program available please see my project at github.com/RZulu54/ChessBrainVB)
 
-
+Hint: For arithemetic operations the VB Variant subtype vbDecimal can be used.
+' Largest Decimal:      +/- 79228162514264337593543950335.  2^96-1 (sign bit handled separately)
+' Smallest Decimal:     +/- 0.0000000000000000000000000001 
+Dim D1 as Variant
+D1 = CDec(2 ^ 95)
+D1 = D1 / 2#
